@@ -1,6 +1,6 @@
 Dbody {
     font-family: Arial, sans-serif;
-    background-color: #222222;
+    background-color: #fff;
     color: #eeeeee;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ Dbody {
 header {
     text-align: center;
     padding: 30px 10px 10px;
-    background: #2941ab;
+    background: #fff;
 }
 
 .logo {
@@ -26,7 +26,7 @@ header {
 }
 
 nav {
-    background-color: #333;
+    background-color: #fff;
     text-align: center;
     padding: 10px 0;
 }
@@ -46,14 +46,14 @@ nav a:hover {
 section {
     max-width: 800px;
     margin: 30px auto 20px;
-    background-color: #282828;
+    background-color: #fff;
     padding: 25px 30px;
     border-radius: 14px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
 h1, h2 {
-    color: #ffcc00;
+    color: #fff;
     margin-bottom: 12px;
 }
 
@@ -76,3 +76,4 @@ footer {
     margin-top: 40px;
     border-top: 2px solid #ffcc00;
 }
+
