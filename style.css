@@ -1,18 +1,78 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #222222;
-  text-align: center;
-  padding: 50px;
+Dbody {
+    font-family: Arial, sans-serif;
+    background-color: #222222;
+    color: #eeeeee;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-  color: #2c3e50;
+header {
+    text-align: center;
+    padding: 30px 10px 10px;
+    background: #2941ab;
 }
 
-p {
-  color: #555;
-  font-size: 18px;
-
+.logo {
+    width: 80px;
+    border-radius: 15px;
+    margin-bottom: 10px;
 }
 
+.tagline {
+    color: #ffcc00;
+    font-size: 1.1em;
+    margin: 5px 0 15px;
+    font-weight: bold;
+}
 
+nav {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    font-size: 1.05em;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+section {
+    max-width: 800px;
+    margin: 30px auto 20px;
+    background-color: #282828;
+    padding: 25px 30px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+h1, h2 {
+    color: #ffcc00;
+    margin-bottom: 12px;
+}
+
+.service-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.service-list li {
+    padding: 8px 0;
+    font-size: 1.07em;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.95em;
+    background: #222;
+    color: #ffcc00;
+    padding: 20px 10px;
+    margin-top: 40px;
+    border-top: 2px solid #ffcc00;
+}
