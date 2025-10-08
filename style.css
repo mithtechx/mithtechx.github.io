@@ -104,5 +104,17 @@ footer {
   h1, h2 { font-size: 1.18em; }
   .service-list, .service-list li { font-size: 1em; }
 }
+.banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: 240px;      /* Adjust height as needed */
+  object-fit: cover;  /* Makes sure the image always covers the banner area */
+  display: block;
+}
+
 
 
