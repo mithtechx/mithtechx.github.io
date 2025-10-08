@@ -1,9 +1,8 @@
 Dbody {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #eeeeee;
-    margin: 0;
-    padding: 0;
+    font-family: 'OPen Sans', Arial;
+    sans-serif;
+    background-color: #f9f9f9;
+    color: #222324
 }
 
 header {
@@ -32,15 +31,22 @@ nav {
 }
 
 nav a {
-    color: #ffcc00;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 15px;
-    font-size: 1.05em;
+    color: #356bf3;
 }
 
 nav a:hover {
+    color: #f7b500;
+}
+
+button, .accent{
+    background: #f7b500
     color: #fff;
+    border: none;
+    font-family: 'Montserrat', Arial,
+sans-serif;
+    padding: 8px 16px;
+    border-redius: 4px;
+    cersor: pointer;
 }
 
 section {
@@ -53,8 +59,9 @@ section {
 }
 
 h1, h2 {
-    color: #fff;
-    margin-bottom: 12px;
+    font-family:'Montserrat', Arial,
+        sans-serif;
+    color: #356bf3;
 }
 
 .service-list {
@@ -76,4 +83,5 @@ footer {
     margin-top: 40px;
     border-top: 2px solid #ffcc00;
 }
+
 
