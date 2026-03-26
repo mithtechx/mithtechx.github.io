@@ -67,37 +67,58 @@
                     </div>
                 </div>
 
-                <!-- Payment Details -->
-                <div>
-                    <h4 class="font-semibold mb-4">Payment Details</h4>
-                    <div class="bg-white/10 rounded-2xl p-6 space-y-6">
-                        <div>
-                            <p class="text-sm text-slate-400">Bank Account</p>
-                            <p id="bank-details" class="font-medium">Account Name: Mr Mithilesh Santosh Chavhan <br>Account No: [You will add]<br>IFSC: [You will add]</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-slate-400">UPI ID</p>
-                            <p id="upi-id" class="font-medium">mithtechx@ybl</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-slate-400 mb-3">Scan QR Code to Pay</p>
-                            <div class="bg-white w-40 h-40 mx-auto rounded-2xl flex items-center justify-center text-slate-950 text-5xl border-2 border-dashed">
-                                📱 QR CODE<br><span class="text-xs">https://i.ibb.co/sdVV6pYw/IMG-20260326-WA0009.jpg</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 text-xs text-slate-400">
-                        <strong>Important Payment Terms:</strong><br>
-                        • 50% advance required to start work<br>
-                        • Payments are non-refundable after work begins<br>
-                        • Full payment required before final delivery<br>
-                        • All prices are in Indian Rupees (₹)
-                    </div>
-
-                    <p class="text-center mt-8 text-slate-400 text-sm">🔒 Secure Payment • Powered by MithTechX</p>
-                </div>
+               <!-- PAYMENT DETAILS SECTION - Updated with your QR Code -->
+<div class="bg-white/10 rounded-3xl p-8">
+    <h4 class="font-semibold mb-6 text-xl">Payment Details</h4>
+    
+    <div class="space-y-8">
+        <!-- Bank Details -->
+        <div>
+            <p class="text-sm text-slate-400 mb-2">Bank Transfer</p>
+            <div class="bg-slate-900 rounded-2xl p-5 text-sm">
+                <p><strong>Account Name:</strong> MithTechX</p>
+                <p><strong>Account Number:</strong> [Add your account number]</p>
+                <p><strong>IFSC Code:</strong> [Add your IFSC code]</p>
             </div>
+        </div>
+
+        <!-- UPI -->
+        <div>
+            <p class="text-sm text-slate-400 mb-2">UPI ID</p>
+            <div class="bg-slate-900 rounded-2xl p-5 font-medium">
+                mithtechx@ybl
+            </div>
+        </div>
+
+        <!-- QR Code -->
+        <div>
+            <p class="text-sm text-slate-400 mb-4">Scan QR Code to Pay Instantly</p>
+            <div class="bg-white p-4 rounded-3xl inline-block mx-auto shadow-2xl">
+                <img src="https://i.postimg.cc/wvBQFkJB/Whats-App-Image-2026-03-26-at-2-11-06-PM.jpg" 
+                     alt="MithTechX Payment QR Code" 
+                     class="w-64 h-64 object-contain rounded-2xl">
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-4">Scan with any UPI app (Google Pay, PhonePe, Paytm, etc.)</p>
+        </div>
+    </div>
+
+    <!-- Important Payment Terms -->
+    <div class="mt-10 pt-8 border-t border-white/20">
+        <p class="text-xs text-amber-400 font-semibold mb-3">IMPORTANT PAYMENT TERMS</p>
+        <ul class="text-xs text-slate-400 space-y-2">
+            <li>• 50% advance payment is required to start the project</li>
+            <li>• Payments are non-refundable after work begins</li>
+            <li>• Final files will be delivered only after full payment</li>
+            <li>• All prices are in Indian Rupees (₹)</li>
+            <li>• Use coupon <span class="text-emerald-400 font-medium">WELCOME10</span> for 10% instant discount</li>
+        </ul>
+    </div>
+
+    <div class="text-center mt-10">
+        <p class="text-xs text-slate-400">🔒 Secure &amp; Transparent Payment</p>
+        <p class="text-xs text-cyan-400 font-medium">Powered by MithTechX</p>
+    </div>
+</div>
 
             <button onclick="completeOrder()" 
                     class="w-full mt-10 bg-cyan-500 hover:bg-cyan-400 text-slate-950 py-7 text-2xl font-semibold rounded-3xl">
