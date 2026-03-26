@@ -1,12 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MithTechX | Professional Tech & Engineering Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem 2rem;
+    background:#020617;
+}
+nav h2{color:#38bdf8;}
+nav a{color:white;margin-left:20px;text-decoration:none;}
+
+/* HERO */
+header{
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:white;
+    text-align:center;
+    padding:5rem 2rem;
+}
+header h1{font-size:3rem;}
+header p{color:#cbd5f5;margin-top:10px;}
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#38bdf8;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+/* SECTION */
+section{padding:4rem 2rem;}
+.container{max-width:1100px;margin:auto;}
+
+/* CARDS */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:2rem;
+}
+.card{
+    background:white;
+    padding:2rem;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+.card:hover{transform:translateY(-8px);}
+
+/* STATS */
+.stats{
+    text-align:center;
+}
+
+/* FEA */
+.fea{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    border-radius:12px;
+    padding:2rem;
+}
+.fea h3{color:#38bdf8;}
+
+/* CONTACT */
+.contact{
+    background:#020617;
+    color:white;
+    text-align:center;
+    border-radius:10px;
+}
+.contact a{color:#38bdf8;}
+
+/* TERMS */
+.terms{
+    background:white;
+    border-radius:10px;
+    padding:2rem;
+    font-size:0.9rem;
+}
+
+/* FOOTER */
+footer{
+    background:#020617;
+    color:#94a3b8;
+    text-align:center;
+    padding:2rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<h2>MithTechX</h2>
+<div>
+<a href="#services">Services</a>
+<a href="#fea">FEA</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<header>
+<h1>🚀 MithTechX</h1>
+<p>Web Development • Graphic Design • Engineering Analysis • Data Solutions</p>
+<a href="#contact" class="btn">Start Your Project</a>
+</header>
+
+<!-- ACHIEVEMENTS -->
+<section class="stats">
+<div class="container">
+<h2 style="margin-bottom:40px;">📈 Our Achievements</h2>
+
+<div class="services">
+
 <div class="card">
-<h3>🔬 Finite Element Analysis (FEA)</h3>
-<p>Professional engineering simulation services for accurate performance evaluation and design validation.</p>
+<h1 style="font-size:2.5rem;color:#38bdf8;">50+</h1>
+<p><strong>Web Development Projects</strong></p>
+</div>
+
+<div class="card">
+<h1 style="font-size:2.5rem;color:#38bdf8;">100+</h1>
+<p><strong>Graphic Design Works</strong></p>
+</div>
+
+<div class="card">
+<h1 style="font-size:2.5rem;color:#38bdf8;">50+</h1>
+<p><strong>FEA Projects Completed</strong></p>
+</div>
+
+<div class="card">
+<h1 style="font-size:2.5rem;color:#38bdf8;">∞</h1>
+<p><strong>Growing Every Day</strong></p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section>
+<div class="container" style="text-align:center;">
+<h2>About MithTechX</h2>
+<p>
+MithTechX delivers high-quality freelance solutions in web development, engineering simulations,
+graphic design, and data processing. We focus on performance, precision, and modern design
+to help businesses grow digitally.
+</p>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:30px;">Our Services</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>🌐 Web Development</h3>
 <ul>
-<li>Structural stress & strain analysis</li>
-<li>Thermal & heat transfer simulations</li>
-<li>Modal & vibration analysis</li>
-<li>Fatigue & life prediction</li>
-<li>Factor of Safety (FOS) calculations</li>
-<li>CAD model simulation (ANSYS / SolidWorks)</li>
+<li>Business websites</li>
+<li>Portfolio websites</li>
+<li>SEO optimization</li>
+<li>Custom web apps</li>
 </ul>
 </div>
+
+<div class="card">
+<h3>📱 App Development</h3>
+<ul>
+<li>Android apps</li>
+<li>Play Store deployment</li>
+<li>UI/UX design</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🎨 Graphic Design</h3>
+<ul>
+<li>Logo design</li>
+<li>Social media creatives</li>
+<li>Brand identity</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>📊 Data Processing</h3>
+<ul>
+<li>Excel automation</li>
+<li>Reports</li>
+<li>Data cleaning</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>⚙️ Technical Services</h3>
+<ul>
+<li>Documentation</li>
+<li>Automation tools</li>
+<li>System setup</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- FEA -->
+<section id="fea">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:30px;">🔬 Finite Element Analysis (FEA)</h2>
+
+<div class="fea">
+<h3>Advanced Engineering Simulation</h3>
+
+<p>
+We provide professional Finite Element Analysis services to validate designs and improve
+product performance using advanced simulation tools.
+</p>
+
+<ul style="margin-top:15px;">
+<li>✔ Stress & Strain Analysis</li>
+<li>✔ Thermal Simulation</li>
+<li>✔ Vibration & Modal Analysis</li>
+<li>✔ Fatigue & Life Prediction</li>
+<li>✔ Factor of Safety Calculation</li>
+<li>✔ ANSYS / SolidWorks Simulation</li>
+</ul>
+
+<p style="margin-top:15px;">
+Industries: Automotive • Mechanical • Manufacturing • Product Design
+</p>
+
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container contact">
+<h2>Contact Us</h2>
+<p>Let’s build something amazing together.</p>
+
+<p><strong>Email:</strong> <a href="mailto:mithtechx@gmail.com">mithtechx@gmail.com</a></p>
+<p><strong>WhatsApp:</strong> <a href="https://wa.me/918261039902">+91 8261039902</a></p>
+
+<a href="https://wa.me/918261039902" class="btn">Chat on WhatsApp</a>
+</div>
+</section>
+
+<!-- TERMS -->
+<section>
+<div class="container terms">
+<h2>Terms & Conditions</h2>
+<p>
+• Services are delivered as per agreed requirements.<br>
+• Payments are non-refundable after project initiation.<br>
+• Timelines depend on project scope.<br>
+• Clients must provide accurate inputs.<br>
+• Final files delivered after full payment.<br>
+• Limited support unless extended.<br>
+</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2025 MithTechX | Made by MithTechX</p>
+<p>All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
