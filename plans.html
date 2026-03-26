@@ -91,15 +91,25 @@
         </div>
 
         <!-- QR Code -->
-        <div>
-            <p class="text-sm text-slate-400 mb-4">Scan QR Code to Pay Instantly</p>
-            <div class="bg-white p-4 rounded-3xl inline-block mx-auto shadow-2xl">
-                <img src="https://i.postimg.cc/wvBQFkJB/Whats-App-Image-2026-03-26-at-2-11-06-PM.jpg" 
-                     alt="MithTechX Payment QR Code" 
-                     class="w-64 h-64 object-contain rounded-2xl">
-            </div>
-            <p class="text-center text-xs text-slate-400 mt-4">Scan with any UPI app (Google Pay, PhonePe, Paytm, etc.)</p>
+      <!-- DYNAMIC QR CODE SECTION - With 10% Discount Support -->
+<div class="bg-white/10 rounded-3xl p-8">
+    <h4 class="font-semibold mb-6 text-xl">Scan to Pay</h4>
+    
+    <div class="text-center">
+        <p class="text-sm text-slate-400 mb-3">Final Amount</p>
+        <div id="final-amount" class="text-6xl font-bold heading-font text-emerald-400 mb-8">₹0</div>
+        
+        <!-- Dynamic QR Container -->
+        <div class="bg-white p-5 rounded-3xl inline-block mx-auto shadow-2xl">
+            <img id="dynamic-qr" 
+                 src="https://i.postimg.cc/wvBQFkJB/Whats-App-Image-2026-03-26-at-2-11-06-PM.jpg" 
+                 alt="MithTechX Payment QR Code" 
+                 class="w-64 h-64 object-contain rounded-2xl">
         </div>
+        
+        <p id="scan-text" class="mt-6 text-emerald-400 font-medium text-lg">
+            Scan with any UPI app to pay
+        </p>
     </div>
 
     <!-- Important Payment Terms -->
