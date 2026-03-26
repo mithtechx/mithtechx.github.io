@@ -3,89 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MithTechX - Professional Freelance Services</title>
-    <meta name="description" content="Expert web development, graphic design, FEA engineering analysis, and data processing services.">
+    <title>MithTechX | Engineering Analysis & Digital Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #10b981; 
+            --bg-dark: #0f172a; 
+            --bg-card: #1e293b; 
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --fea-accent: #38bdf8; /* Technical blue for engineering */
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #2c3e50; background: #ecf0f1; }
-        header { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; text-align: center; padding: 4rem 2rem; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; padding: 4rem 0; }
-        .service { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: all 0.3s ease; }
-        .service:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
-        .service h3 { color: #2980b9; font-size: 1.4rem; margin-bottom: 1rem; display: flex; align-items: center; }
-        .service h3::before { content: ''; width: 8px; height: 8px; background: #e74c3c; border-radius: 50%; margin-right: 12px; }
-        .service ul { list-style: none; padding: 0; }
-        .service li { padding: 0.5rem 0; border-bottom: 1px solid #ecf0f1; }
-        .service li:last-child { border-bottom: none; }
-        .cta { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 3rem 2rem; text-align: center; border-radius: 12px; margin: 3rem 0; }
-        .cta a { color: white; font-weight: 600; font-size: 1.1rem; text-decoration: none; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem; }
-        @media (max-width: 768px) { .services { grid-template-columns: 1fr; gap: 1.5rem; } }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Hero Section */
+        header { padding: 6rem 2rem; text-align: center; background: radial-gradient(circle at top, #1e293b, #0f172a); }
+        header h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3.5rem; margin-bottom: 1rem; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 4rem 0; }
+        .card { background: var(--bg-card); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card h3 { color: var(--primary); margin-bottom: 1rem; }
+        
+        /* SPECIAL FEA SECTION */
+        .fea-showcase { 
+            background: rgba(56, 189, 248, 0.05); 
+            border: 1px solid var(--fea-accent); 
+            border-radius: 24px; 
+            padding: 4rem 2rem; 
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .fea-showcase::before {
+            content: "SIMULATION_DATA";
+            position: absolute; font-family: 'JetBrains Mono', monospace;
+            font-size: 8rem; color: rgba(56, 189, 248, 0.03);
+            top: -20px; right: -20px; font-weight: 800;
+        }
+        .fea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .fea-list { list-style: none; }
+        .fea-list li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+        .fea-list li::before { content: "•"; color: var(--fea-accent); position: absolute; left: 0; font-weight: bold; }
+        
+        /* Technical Terms */
+        .terms { background: #0a0f1d; padding: 3rem; border-radius: 20px; margin-top: 4rem; font-size: 0.9rem; border-left: 4px solid var(--primary); }
+        
+        /* Contact */
+        .contact { background: linear-gradient(135deg, var(--primary), var(--fea-accent)); color: white; padding: 4rem; border-radius: 24px; text-align: center; margin: 4rem 0; }
+        .btn { display: inline-block; padding: 1rem 2rem; background: white; color: var(--bg-dark); text-decoration: none; border-radius: 50px; font-weight: 700; margin-top: 1.5rem; transition: 0.3s; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        footer { text-align: center; padding: 4rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 850px) { .fea-grid { grid-template-columns: 1fr; } header h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>🛠️ MithTechX</h1>
-        <p>Professional Freelance Services | Web Development • Graphic Design • Engineering Analysis • Data Processing</p>
+        <div class="container">
+            <h1>MithTechX</h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem;">Advanced Engineering Simulation & Digital Architecture</p>
+        </div>
     </header>
 
     <div class="container">
-        <section class="services">
-            <div class="service">
-                <h3>🌐 Web & Mobile Development</h3>
-                <p>Custom websites and Android applications with modern frameworks and responsive design.</p>
-                <ul>
-                    <li>GitHub Pages with custom domains</li>
-                    <li>Android Studio APKs for Play Store</li>
-                    <li>SEO optimized responsive layouts</li>
-                    <li>Contact forms & booking systems</li>
-                </ul>
+        <section class="services-grid">
+            <div class="card">
+                <h3>🌐 Web & App Dev</h3>
+                <p>Building scalable Android applications and high-conversion websites using modern tech stacks.</p>
             </div>
-
-            <div class="service">
-                <h3>🎨 Graphic Design</h3>
-                <p>Professional branding materials and visual content for business and marketing needs.</p>
-                <ul>
-                    <li>Logo design (vector format)</li>
-                    <li>Posters, flyers, social media graphics</li>
-                    <li>Photo editing & retouching</li>
-                    <li>Marketing collateral design</li>
-                </ul>
+            <div class="card">
+                <h3>🎨 Creative Design</h3>
+                <p>Vector-based brand identities, high-fidelity UI/UX, and professional marketing collateral.</p>
             </div>
-
-            <div class="service">
-                <h3>🔬 Finite Element Analysis</h3>
-                <p>Engineering simulations for structural integrity and performance analysis.</p>
-                <ul>
-                    <li>Stress & strain analysis</li>
-                    <li>Thermal analysis simulations</li>
-                    <li>Modal & vibration analysis</li>
-                    <li>Factor of safety calculations</li>
-                </ul>
-            </div>
-
-            <div class="service">
-                <h3>📊 Data Processing</h3>
-                <p>Accurate data management, analysis, and professional content creation services.</p>
-                <ul>
-                    <li>Data validation & cleanup</li>
-                    <li>Excel reports & pivot tables</li>
-                    <li>SEO optimization services</li>
-                    <li>Technical documentation</li>
-                </ul>
+            <div class="card">
+                <h3>📊 Data Systems</h3>
+                <p>Complex data processing, technical documentation, and SEO architectural optimization.</p>
             </div>
         </section>
 
-        <div class="cta">
-            <h2>Ready to Start Your Project?</h2>
-            <p><strong>📧 Email:</strong> <a href="mailto:mithtechx@gmail.com">mithtechx@gmail.com</a><br>
-            <strong>📱 WhatsApp:</strong> <a href="https://wa.me/918261039902">+91 8261039902</a></p>
-        </div>
+        <section class="fea-showcase">
+            <div class="fea-grid">
+                <div>
+                    <h2 style="color: var(--fea-accent); font-family: 'Plus Jakarta Sans'; font-size: 2.2rem; margin-bottom: 1.5rem;">
+                        Finite Element Analysis (FEA)
+                    </h2>
+                    <p style="margin-bottom: 2rem;">We provide rigorous structural and thermal simulations to validate your designs before they hit production. Reduce costs and ensure safety with data-backed engineering.</p>
+                    <ul class="fea-list">
+                        <li><strong>Static Structural:</strong> Stress, strain, and deformation analysis.</li>
+                        <li><strong>Thermal Analysis:</strong> Heat transfer and steady-state thermal loading.</li>
+                        <li><strong>Dynamic Analysis:</strong> Modal, harmonic, and vibration testing.</li>
+                        <li><strong>Safety Validation:</strong> Factor of Safety (FoS) and fatigue life prediction.</li>
+                    </ul>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 15px; border: 1px dashed var(--fea-accent);">
+                    <code style="font-family: 'JetBrains Mono'; color: var(--fea-accent); font-size: 0.85rem;">
+                        // Simulation Parameters<br>
+                        [Mesh Generation: Fine-Tetrahedral]<br>
+                        [Solver: Iterative/Non-Linear]<br>
+                        [Validation: Von-Mises Stress]<br><br>
+                        > Analysis Complete.<br>
+                        > Structural Integrity: VERIFIED.<br>
+                        > Optimization: ACHIEVED.
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms">
+            <h3 style="color: white; margin-bottom: 1.5rem;">Service Terms & Ethics</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--primary);">FEA Liability</h4>
+                    <p style="color: var(--text-muted);">Engineering simulations are based on user-provided material properties and boundary conditions. Results are for validation assistance.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary);">Design Rights</h4>
+                    <p style="color: var(--text-muted);">Full source files (APKs, Vectors, Models) are released upon 100% project completion and payment.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary);">Confidentiality</h4>
+                    <p style="color: var(--text-muted);">All client data and proprietary engineering models are protected under a strict Non-Disclosure Policy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Ready to Engineer the Future?</h2>
+            <p>Connect with MithTechX for a professional consultation.</p>
+            <div style="margin-top: 1rem;">
+                <p>Email: <strong>mithtechx@gmail.com</strong></p>
+                <p>WhatsApp: <strong>+91 8261039902</strong></p>
+            </div>
+            <a href="mailto:mithtechx@gmail.com" class="btn">Get a Custom Quote</a>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 MithTechX - Professional Freelance Excellence</p>
+        <p><strong>MithTechX</strong> | Made by MithTechX</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">All Rights Reserved &copy; 2025 - 2026</p>
     </footer>
+
 </body>
 </html>
