@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans & Pricing - MithTechX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .plan-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .plan-card:hover { transform: translateY(-12px); }
+        .popular { position: relative; }
+        .popular::before { content: 'MOST POPULAR'; position: absolute; top: -12px; right: 20px; background: #f59e0b; color: white; font-size: 11px; padding: 2px 14px; border-radius: 9999px; font-weight: bold; }
+    </style>
+</head>
+<body class="tailwind-ready bg-slate-950 text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <img src="https://i.postimg.cc/pVsFJWh1/logo-png.png" alt="MithTechX Logo" class="h-10 w-auto">
+                <span class="heading-font text-3xl tracking-[-1px]">MithTechX</span>
+            </div>
+            <a href="index.html" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <div class="max-w-screen-2xl mx-auto px-8 py-12">
+        <h1 class="heading-font text-5xl text-center mb-2">Choose Your Service &amp; Plan</h1>
+        <p class="text-center text-slate-400">Clear pricing • Fixed delivery • 10% off with WELCOME10</p>
+
+        <!-- Service Selector -->
+        <div class="flex flex-wrap gap-3 justify-center mt-12 mb-10" id="service-tabs">
+            <!-- JS will fill these -->
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="grid md:grid-cols-3 gap-8" id="pricing-cards">
+            <!-- JS will dynamically load cards -->
+        </div>
+
+        <!-- Checkout Section -->
+        <div id="checkout-section" class="hidden mt-20 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10">
+            <h3 class="text-3xl font-semibold mb-8">Checkout</h3>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Order Summary -->
+                <div>
+                    <h4 class="font-semibold mb-4">Order Summary</h4>
+                    <div id="order-summary" class="bg-white/10 rounded-2xl p-6 space-y-4"></div>
+
+                    <!-- Coupon -->
+                    <div class="mt-8">
+                        <label class="block text-sm mb-2">Have a coupon?</label>
+                        <div class="flex gap-3">
+                            <input type="text" id="coupon-input" value="WELCOME10" 
+                                   class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 flex-1 text-lg">
+                            <button onclick="applyCoupon()" 
+                                    class="bg-emerald-500 hover:bg-emerald-600 px-10 rounded-2xl font-semibold">Apply</button>
+                        </div>
+                        <div id="coupon-status" class="mt-3 text-emerald-400 font-medium"></div>
+                    </div>
+                </div>
+
+                <!-- Payment Details -->
+                <div>
+                    <h4 class="font-semibold mb-4">Payment Details</h4>
+                    <div class="bg-white/10 rounded-2xl p-6 space-y-6">
+                        <div>
+                            <p class="text-sm text-slate-400">Bank Account</p>
+                            <p id="bank-details" class="font-medium">Account Name: MithTechX<br>Account No: [You will add]<br>IFSC: [You will add]</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400">UPI ID</p>
+                            <p id="upi-id" class="font-medium">mithtechx@upi</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400 mb-3">Scan QR Code to Pay</p>
+                            <div class="bg-white w-40 h-40 mx-auto rounded-2xl flex items-center justify-center text-slate-950 text-5xl border-2 border-dashed">
+                                📱 QR CODE<br><span class="text-xs">(Place your QR here later)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-xs text-slate-400">
+                        <strong>Important Payment Terms:</strong><br>
+                        • 50% advance required to start work<br>
+                        • Payments are non-refundable after work begins<br>
+                        • Full payment required before final delivery<br>
+                        • All prices are in Indian Rupees (₹)
+                    </div>
+
+                    <p class="text-center mt-8 text-slate-400 text-sm">🔒 Secure Payment • Powered by MithTechX</p>
+                </div>
+            </div>
+
+            <button onclick="completeOrder()" 
+                    class="w-full mt-10 bg-cyan-500 hover:bg-cyan-400 text-slate-950 py-7 text-2xl font-semibold rounded-3xl">
+                Confirm &amp; Send Payment Details on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Services Data
+        const services = {
+            "logo": {
+                name: "Logo Design",
+                plans: [
+                    { tier: "Basic", price: 999, delivery: "3 days", revisions: "2", features: ["Simple logo", "1 concept", "PNG + JPEG"] },
+                    { tier: "Standard", price: 2499, delivery: "2 days", revisions: "4", features: ["Professional logo", "2 concepts", "Vector + PNG + Source"], popular: true },
+                    { tier: "Premium", price: 4999, delivery: "1 day", revisions: "Unlimited", features: ["Premium branding", "3 concepts", "Full brand kit"] }
+                ]
+            },
+            "web": {
+                name: "Web & Mobile Development",
+                plans: [
+                    { tier: "Basic", price: 8999, delivery: "10 days", revisions: "2", features: ["Single page website", "Responsive design", "Contact form"] },
+                    { tier: "Standard", price: 14999, delivery: "8 days", revisions: "4", features: ["Multi-page website", "SEO optimized", "Admin dashboard"], popular: true },
+                    { tier: "Premium", price: 24999, delivery: "14 days", revisions: "Unlimited", features: ["Full-stack app", "Android/iOS ready", "Custom features"] }
+                ]
+            },
+            "graphic": {
+                name: "Graphic Design",
+                plans: [
+                    { tier: "Basic", price: 1499, delivery: "3 days", revisions: "2", features: ["Single poster/flyer", "Basic editing"] },
+                    { tier: "Standard", price: 3499, delivery: "2 days", revisions: "4", features: ["Social media kit (10 posts)", "Branding elements"], popular: true },
+                    { tier: "Premium", price: 6999, delivery: "5 days", revisions: "Unlimited", features: ["Complete marketing package", "Motion graphics"] }
+                ]
+            },
+            "fea": {
+                name: "Finite Element Analysis (FEA)",
+                plans: [
+                    { tier: "Basic", price: 4999, delivery: "5 days", revisions: "1", features: ["Basic stress analysis", "PDF report"] },
+                    { tier: "Standard", price: 8999, delivery: "4 days", revisions: "2", features: ["Full FEA simulation", "Thermal + Modal"], popular: true },
+                    { tier: "Premium", price: 14999, delivery: "7 days", revisions: "3", features: ["Advanced optimization", "Multiple iterations"] }
+                ]
+            },
+            "data": {
+                name: "Data Processing",
+                plans: [
+                    { tier: "Basic", price: 1999, delivery: "3 days", revisions: "1", features: ["Data cleaning", "Simple Excel report"] },
+                    { tier: "Standard", price: 3999, delivery: "2 days", revisions: "2", features: ["Dashboard + Charts", "Pivot tables"], popular: true },
+                    { tier: "Premium", price: 6999, delivery: "4 days", revisions: "Unlimited", features: ["Advanced analytics", "Automation script"] }
+                ]
+            }
+        };
+
+        let selectedService = "logo";
+        let selectedPlan = null;
+        let discount = 0;
+
+        // Render service tabs
+        function renderTabs() {
+            const container = document.getElementById('service-tabs');
+            container.innerHTML = '';
+            Object.keys(services).forEach(key => {
+                const btn = document.createElement('button');
+                btn.className = `px-8 py-4 rounded-3xl font-medium text-lg ${key === selectedService ? 'bg-cyan-500 text-slate-950' : 'bg-white/10 hover:bg-white/20'}`;
+                btn.textContent = services[key].name;
+                btn.onclick = () => {
+                    selectedService = key;
+                    renderTabs();
+                    renderPricing();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // Render pricing cards
+        function renderPricing() {
+            const container = document.getElementById('pricing-cards');
+            container.innerHTML = '';
+            const data = services[selectedService];
+
+            data.plans.forEach(plan => {
+                const cardHTML = `
+                <div class="plan-card bg-white/10 border ${plan.popular ? 'border-amber-400 popular' : 'border-white/20'} rounded-3xl p-8 text-center">
+                    <h3 class="text-2xl font-semibold">${plan.tier}</h3>
+                    <div class="text-6xl font-bold heading-font my-6">₹${plan.price}</div>
+                    <p class="text-emerald-400">${plan.delivery} delivery • ${plan.revisions} revisions</p>
+                    <ul class="mt-8 text-left space-y-3 text-sm">
+                        ${plan.features.map(f => `<li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> ${f}</li>`).join('')}
+                    </ul>
+                    <button onclick="selectPlan('${plan.tier}', ${plan.price})" 
+                            class="mt-10 w-full py-5 bg-white text-slate-950 rounded-3xl font-semibold hover:bg-cyan-400">
+                        Select ${plan.tier}
+                    </button>
+                </div>`;
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        // Select plan and show checkout
+        function selectPlan(tier, price) {
+            selectedPlan = { tier, price, service: services[selectedService].name };
+            document.getElementById('checkout-section').classList.remove('hidden');
+            document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
+
+            // Render order summary
+            const summary = document.getElementById('order-summary');
+            summary.innerHTML = `
+                <div class="flex justify-between"><span>Service</span><span>${selectedPlan.service}</span></div>
+                <div class="flex justify-between"><span>Plan</span><span>${selectedPlan.tier}</span></div>
+                <div class="flex justify-between border-t border-white/20 pt-4"><span class="font-semibold">Total</span><span class="text-3xl font-bold" id="original-price">₹${selectedPlan.price}</span></div>
+            `;
+        }
+
+        // Apply coupon with animation
+        function applyCoupon() {
+            const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+            const status = document.getElementById('coupon-status');
+
+            if (input === "WELCOME10") {
+                discount = 0.10;
+                status.innerHTML = `🎉 <span class="text-emerald-400">WELCOME10 applied!</span> 10% off added<br><span class="text-xs">Fireworks launched! 🎇🎆</span>`;
+                
+                // Confetti effect
+                createConfetti();
+                
+                // Update final price
+                const original = document.getElementById('original-price');
+                if (original) {
+                    const final = Math.round(selectedPlan.price * 0.9);
+                    original.innerHTML = `₹${selectedPlan.price} <span class="line-through text-slate-400 text-xl ml-2">₹${selectedPlan.price}</span><br>₹${final} <span class="text-emerald-400">(10% off)</span>`;
+                }
+            } else {
+                status.innerHTML = `❌ Invalid coupon`;
+                discount = 0;
+            }
+        }
+
+        // Simple confetti animation
+        function createConfetti() {
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.textContent = ['🎉','🎊','✨','🔥'][Math.floor(Math.random()*4)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-20px';
+                    confetti.style.fontSize = '25px';
+                    confetti.style.zIndex = '9999';
+                    confetti.style.pointerEvents = 'none';
+                    document.body.appendChild(confetti);
+
+                    const fall = Math.random() * 3000 + 2000;
+                    confetti.animate([
+                        { transform: 'translateY(0) rotate(0deg)' },
+                        { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random()*800}deg)` }
+                    ], {
+                        duration: fall,
+                        easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+                    });
+
+                    setTimeout(() => confetti.remove(), fall);
+                }, i * 3);
+            }
+        }
+
+        function completeOrder() {
+            alert("✅ Order confirmed!\n\nThank you! Your plan has been selected.\nI will send you the payment link and next steps on WhatsApp within 10 minutes.\n\n— MithTechX");
+            window.location.href = "https://wa.me/918261039902?text=Hi%20MithTechX%2C%20I%20selected%20the%20" + selectedPlan.tier + "%20plan%20for%20" + selectedPlan.service;
+        }
+
+        // Initialize
+        renderTabs();
+        renderPricing();
+    </script>
+</body>
+</html>
