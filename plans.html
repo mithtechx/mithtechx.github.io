@@ -6,6 +6,7 @@
     <title>Plans & Pricing - MithTechX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
@@ -42,30 +43,26 @@
 
     <div class="max-w-screen-2xl mx-auto px-8 py-12">
         <h1 class="heading-font text-5xl text-center mb-2">Choose Your Service & Plan</h1>
-        <p class="text-center text-slate-400">Clear pricing • 10% off with WELCOME10 coupon</p>
+        <p class="text-center text-slate-400">Clear pricing • 10% off with WELCOME10</p>
 
-        <!-- Service Selector -->
         <div class="flex flex-wrap gap-3 justify-center mt-12 mb-10" id="service-tabs"></div>
-
-        <!-- Pricing Cards -->
         <div class="grid md:grid-cols-3 gap-8" id="pricing-cards"></div>
 
-        <!-- Checkout Section -->
+        <!-- Checkout -->
         <div id="checkout-section" class="hidden mt-20 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10">
             <h3 class="text-3xl font-semibold mb-8">Checkout</h3>
             
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Order Summary -->
+                <!-- Summary + Coupon -->
                 <div>
                     <h4 class="font-semibold mb-4">Order Summary</h4>
                     <div id="order-summary" class="bg-white/10 rounded-2xl p-6 space-y-4"></div>
 
-                    <!-- Coupon -->
                     <div class="mt-8">
-                        <label class="block text-sm mb-2">Apply Coupon Code</label>
+                        <label class="block text-sm mb-2">Coupon Code</label>
                         <div class="flex gap-3">
                             <input type="text" id="coupon-input" value="WELCOME10" 
-                                   class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 flex-1 text-lg outline-none">
+                                   class="bg-white/10 border border-white/30 rounded-2xl px-6 py-4 flex-1">
                             <button onclick="applyCoupon()" 
                                     class="bg-emerald-500 hover:bg-emerald-600 px-10 rounded-2xl font-semibold">Apply</button>
                         </div>
@@ -73,36 +70,35 @@
                     </div>
                 </div>
 
-                <!-- Dynamic QR Payment -->
+                <!-- Payment Section -->
                 <div>
-                    <h4 class="font-semibold mb-6 text-xl">Scan to Pay</h4>
-                    
-                    <div class="text-center">
-                        <p class="text-sm text-slate-400 mb-3">Final Amount</p>
-                        <div id="final-amount" class="text-6xl font-bold heading-font text-emerald-400 mb-8">₹0</div>
-                        
-                        <div class="bg-white p-5 rounded-3xl inline-block mx-auto shadow-2xl">
-                            <img id="dynamic-qr" 
-                                 src="https://i.postimg.cc/wvBQFkJB/Whats-App-Image-2026-03-26-at-2-11-06-PM.jpg" 
-                                 alt="MithTechX Payment QR Code" 
-                                 class="w-64 h-64 object-contain rounded-2xl">
+                    <h4 class="font-semibold mb-6">Payment Details</h4>
+
+                    <div class="mb-6">
+                        <p class="text-sm text-slate-400 mb-2">Bank Transfer</p>
+                        <div class="bg-slate-900 rounded-2xl p-5 text-sm">
+                            <p><strong>Account Name:</strong> MithTechX</p>
+                            <p><strong>Account Number:</strong> [Add your number]</p>
+                            <p><strong>IFSC Code:</strong> [Add your IFSC]</p>
                         </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-sm text-slate-400 mb-2">UPI ID</p>
+                        <div class="bg-slate-900 rounded-2xl p-5 font-medium">mithtechx@upi</div>
+                    </div>
+
+                    <!-- Dynamic QR Code -->
+                    <div class="text-center bg-white/10 rounded-3xl p-8">
+                        <p class="text-sm text-slate-400 mb-3">Final Amount</p>
+                        <div id="final-amount" class="text-6xl font-bold heading-font text-emerald-400 mb-6">₹0</div>
+                        
+                        <div id="qr-container" class="bg-white p-4 rounded-3xl inline-block mx-auto shadow-2xl"></div>
                         
                         <p id="scan-text" class="mt-6 text-emerald-400 font-medium text-lg">
-                            Scan with any UPI app to pay
+                            Scan to pay instantly
                         </p>
                     </div>
-
-                    <div class="mt-10 pt-8 border-t border-white/20 text-xs text-slate-400">
-                        <p class="font-semibold text-amber-400 mb-3">PAYMENT TERMS</p>
-                        <ul class="space-y-1">
-                            <li>• 50% advance required to start the project</li>
-                            <li>• Payments are non-refundable after work begins</li>
-                            <li>• Final files delivered after full payment</li>
-                        </ul>
-                    </div>
-
-                    <p class="text-center mt-8 text-xs text-cyan-400">🔒 Powered by MithTechX</p>
                 </div>
             </div>
 
@@ -114,6 +110,7 @@
     </div>
 
     <script>
+        // Services Data
         const services = {
             "logo": { name: "Logo Design", plans: [
                 { tier: "Basic", price: 999, delivery: "3 days", revisions: "2", features: ["Simple logo", "1 concept", "PNG + JPEG"] },
@@ -145,7 +142,12 @@
         let selectedService = "logo";
         let selectedPlan = null;
         let finalAmount = 0;
+        let qrCodeInstance = null;
 
+        const upiId = "mithtechx@upi";     // ← Change to your real UPI ID
+        const payeeName = "MithTechX";
+
+        // Render service tabs and pricing cards (same as before)
         function renderTabs() {
             const container = document.getElementById('service-tabs');
             container.innerHTML = '';
@@ -153,11 +155,7 @@
                 const btn = document.createElement('button');
                 btn.className = `px-8 py-4 rounded-3xl font-medium ${key === selectedService ? 'bg-cyan-500 text-slate-950' : 'bg-white/10 hover:bg-white/20'}`;
                 btn.textContent = services[key].name;
-                btn.onclick = () => { 
-                    selectedService = key; 
-                    renderTabs(); 
-                    renderPricing(); 
-                };
+                btn.onclick = () => { selectedService = key; renderTabs(); renderPricing(); };
                 container.appendChild(btn);
             });
         }
@@ -188,11 +186,9 @@
         function selectPlan(tier, price) {
             selectedPlan = { tier, price, service: services[selectedService].name };
             finalAmount = price;
-
             document.getElementById('checkout-section').classList.remove('hidden');
             document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth' });
-
-            updateAmountDisplay();
+            updateDynamicQR();
         }
 
         function applyCoupon() {
@@ -202,37 +198,36 @@
             if (input === "WELCOME10") {
                 finalAmount = Math.round(selectedPlan.price * 0.9);
                 status.innerHTML = `🎉 WELCOME10 applied! 10% discount added`;
-                createConfetti();
             } else {
                 finalAmount = selectedPlan.price;
                 status.innerHTML = `❌ Invalid coupon`;
             }
-            updateAmountDisplay();
+            updateDynamicQR();
         }
 
-        function updateAmountDisplay() {
+        function updateDynamicQR() {
             document.getElementById('final-amount').textContent = `₹${finalAmount}`;
+
+            const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${finalAmount}&cu=INR`;
+
+            const container = document.getElementById('qr-container');
+            container.innerHTML = '';
+
+            qrCodeInstance = new QRCode(container, {
+                text: upiLink,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
             document.getElementById('scan-text').innerHTML = `Scan to pay <strong>₹${finalAmount}</strong> instantly`;
         }
 
-        function createConfetti() {
-            for (let i = 0; i < 40; i++) {
-                setTimeout(() => {
-                    const c = document.createElement('div');
-                    c.textContent = '🎉';
-                    c.style.position = 'fixed';
-                    c.style.left = Math.random()*100 + 'vw';
-                    c.style.top = '-20px';
-                    c.style.fontSize = '24px';
-                    document.body.appendChild(c);
-                    setTimeout(() => c.remove(), 3000);
-                }, i*8);
-            }
-        }
-
         function completeOrder() {
-            const message = `Hi MithTechX,%0AI selected the ${selectedPlan.tier} plan for ${selectedPlan.service}.%0AFinal Amount after discount: ₹${finalAmount}%0APlease confirm.`;
-            window.location.href = `https://wa.me/918261039902?text=${message}`;
+            const msg = `Hi MithTechX,\nI selected the ${selectedPlan.tier} plan for ${selectedPlan.service}.\nFinal Amount: ₹${finalAmount}\nPlease confirm.`;
+            window.location.href = `https://wa.me/918261039902?text=${encodeURIComponent(msg)}`;
         }
 
         // Initialize
