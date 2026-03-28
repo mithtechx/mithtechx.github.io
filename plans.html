@@ -221,6 +221,12 @@ function applyCoupon() {
         finalAmount = Math.round(selectedPlan.price * 0.01);       // 99% off
         status.innerHTML = `🎉 MITH99 applied!<br><span class="text-yellow-300">Special 99% discount activated</span>`;
         createConfettiBlast(true);   // Stronger effect for 99% coupon
+
+       else if (input === "MITH9999") {                                // ← 99.99% OFF Coupon
+        finalAmount = Math.round(selectedPlan.price * 0.0001);     // 99.99% off
+        status.innerHTML = `🎉 MITH9999 applied!<br><span class="text-yellow-300">Special 99.99% discount activated</span>`;
+        createConfettiBlast(true);   // Stronger sparkle effect
+    } 
     } 
     else {
         status.innerHTML = `❌ Invalid coupon code`;
