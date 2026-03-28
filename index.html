@@ -289,7 +289,7 @@
     </div>
 </section>
 
-<!-- FIXED CONTACT SECTION - Working with Formspree -->
+<!-- SIMPLE & RELIABLE CONTACT FORM - Using Web3Forms -->
 <section id="contact" class="py-24 bg-white">
     <div class="max-w-screen-2xl mx-auto px-8">
         <div class="grid lg:grid-cols-12 gap-16">
@@ -316,28 +316,27 @@
                 </div>
             </div>
 
-            <!-- Functional Form -->
+            <!-- Working Contact Form -->
             <div class="lg:col-span-7 bg-slate-950 text-white rounded-3xl px-10 py-12">
-                <form action="https://formspree.io/f/mkopoznz" method="POST" id="contact-form">
-                    <input type="hidden" name="_subject" value="New Project Inquiry from MithTechX Website">
-                    
+                <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                    <input type="hidden" name="access_key" value="280ea8bb-d2fa-45c6-bbec-3fe10fcd86ad">
+                    <input type="hidden" name="subject" value="New Project Inquiry from MithTechX Website">
+                    <input type="hidden" name="from_name" value="MithTechX Website">
+
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium mb-2">Your Name *</label>
-                            <input type="text" name="name" required
-                                   class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                            <input type="text" name="name" required class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-2">Company / Business</label>
-                            <input type="text" name="company"
-                                   class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                            <label class="block text-sm font-medium mb-2">Company</label>
+                            <input type="text" name="company" class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
                         </div>
                     </div>
 
                     <div class="mt-6">
                         <label class="block text-sm font-medium mb-2">Email Address *</label>
-                        <input type="email" name="email" required
-                               class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                        <input type="email" name="email" required class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
                     </div>
 
                     <div class="mt-6">
@@ -354,9 +353,8 @@
                     </div>
 
                     <div class="mt-6">
-                        <label class="block text-sm font-medium mb-2">Project Details / Requirements *</label>
-                        <textarea name="message" rows="5" required
-                                  class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none resize-none"></textarea>
+                        <label class="block text-sm font-medium mb-2">Project Details *</label>
+                        <textarea name="message" rows="5" required class="w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none resize-none"></textarea>
                     </div>
 
                     <button type="submit"
