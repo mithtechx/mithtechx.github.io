@@ -260,44 +260,88 @@
     </div>
 </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-24 bg-slate-950 text-white">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid lg:grid-cols-12 gap-16">
-                <div class="lg:col-span-5">
-                    <h2 class="heading-font text-5xl">Ready to Start Your Project?</h2>
-                    <p class="mt-6 text-xl text-slate-300">Web • Graphic Design • Logo • FEA • Data Processing</p>
-                    
-                    <div class="mt-12 space-y-8">
+    <!-- CONTACT SECTION - Now Fully Functional -->
+<section id="contact" class="py-24 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <div class="grid lg:grid-cols-12 gap-16">
+            <!-- Left Info -->
+            <div class="lg:col-span-5">
+                <h2 class="heading-font text-5xl">Ready to Start Your Project?</h2>
+                <p class="mt-6 text-xl text-slate-600">Tell me about your requirements and I'll get back to you within a few hours.</p>
+                
+                <div class="mt-12 space-y-8">
+                    <div class="flex items-center gap-x-6">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl">📧</div>
                         <div>
-                            <p class="uppercase text-xs tracking-widest">Email</p>
-                            <a href="mailto:mithtechx@gmail.com" class="text-2xl hover:text-cyan-400">mithtechx@gmail.com</a>
+                            <p class="uppercase text-xs tracking-widest font-semibold">Email</p>
+                            <a href="mailto:mithtechx@gmail.com" class="text-2xl font-medium hover:text-cyan-600">mithtechx@gmail.com</a>
                         </div>
+                    </div>
+                    <div class="flex items-center gap-x-6">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl">📱</div>
                         <div>
-                            <p class="uppercase text-xs tracking-widest">WhatsApp</p>
-                            <a href="https://wa.me/918261039902" target="_blank" class="text-2xl hover:text-cyan-400">+91 82610 39902</a>
+                            <p class="uppercase text-xs tracking-widest font-semibold">WhatsApp</p>
+                            <a href="https://wa.me/918261039902" target="_blank" class="text-2xl font-medium hover:text-cyan-600">+91 82610 39902</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="lg:col-span-7 bg-white/10 backdrop-blur rounded-3xl p-10">
-                    <form id="contact-form" class="space-y-6">
-                        <input type="text" id="name" placeholder="Your Name" required class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white placeholder:text-slate-400">
-                        <input type="email" id="email" placeholder="Email Address" required class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white placeholder:text-slate-400">
-                        <select id="service" class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white">
-                            <option value="">Select Service</option>
-                            <option>Web & Mobile Development</option>
-                            <option>Graphic & Logo Design</option>
-                            <option>Finite Element Analysis (FEA)</option>
-                            <option>Data Processing</option>
+            <!-- Functional Contact Form -->
+            <div class="lg:col-span-7 bg-slate-950 text-white rounded-3xl px-10 py-12">
+                <form action="https://formspree.io/f/mkopoznz" method="POST" id="contact-form">
+                    <input type="hidden" name="_subject" value="New Project Inquiry from Website">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html"> <!-- Optional: Thank you page -->
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Your Name *</label>
+                            <input type="text" name="name" required
+                                   class="form-input w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Company / Business</label>
+                            <input type="text" name="company"
+                                   class="form-input w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Email Address *</label>
+                        <input type="email" name="email" required
+                               class="form-input w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Service Interested In</label>
+                        <select name="service" 
+                                class="form-input w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none">
+                            <option value="">Select Service...</option>
+                            <option value="Logo Design">Logo Design</option>
+                            <option value="Graphic Design">Graphic Design</option>
+                            <option value="Web & Mobile Development">Web & Mobile Development</option>
+                            <option value="Finite Element Analysis (FEA)">Finite Element Analysis (FEA)</option>
+                            <option value="Data Processing">Data Processing</option>
+                            <option value="Other">Other</option>
                         </select>
-                        <textarea id="message" rows="5" placeholder="Tell me about your project..." class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white placeholder:text-slate-400"></textarea>
-                        <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold py-7 rounded-3xl text-lg">Send Message</button>
-                    </form>
-                </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium mb-2">Project Details / Requirements *</label>
+                        <textarea name="message" rows="5" required
+                                  class="form-input w-full bg-white/10 border border-white/30 focus:border-cyan-400 rounded-3xl px-6 py-6 text-lg outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full mt-10 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-semibold py-7 rounded-3xl text-xl flex items-center justify-center gap-x-3">
+                        Send Project Inquiry 
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- FOOTER -->
     <footer class="bg-black text-slate-400 py-12 text-center">
