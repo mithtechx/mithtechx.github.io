@@ -206,20 +206,67 @@
             `;
         }
 
-        function applyCoupon() {
-            const input = document.getElementById('coupon-input').value.trim().toUpperCase();
-            const status = document.getElementById('coupon-status');
+       // ==================== COUPON + SPARKLES EFFECT ====================
 
-            if (input === "WELCOME10") {
-                finalAmount = Math.round(selectedPlan.price * 0.9);
-                status.innerHTML = `🎉 WELCOME10 applied successfully! 10% discount added`;
-                updateOrderSummary();
-                generateDynamicQR();
-            } else {
-                status.innerHTML = `❌ Invalid coupon code`;
-            }
-        }
+function applyCoupon() {
+    const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+    const status = document.getElementById('coupon-status');
 
+    if (input === "WELCOME10") {
+        finalAmount = Math.round(selectedPlan.price * 0.9);        // 10% off
+        status.innerHTML = `🎉 WELCOME10 applied successfully!<br><span class="text-emerald-300">10% discount added</span>`;
+        createConfettiBlast();
+    } 
+    else if (input === "MITH99") {
+        finalAmount = Math.round(selectedPlan.price * 0.01);       // 99% off
+        status.innerHTML = `🎉 MITH99 applied!<br><span class="text-yellow-300">Special 99% discount activated</span>`;
+        createConfettiBlast(true);   // Stronger effect for 99% coupon
+    } 
+    else {
+        status.innerHTML = `❌ Invalid coupon code`;
+        return;
+    }
+
+    // Update everything after coupon is applied
+    updateOrderSummary();
+    generateDynamicQR();
+}
+
+// Sparkling / Blast Effect
+function createConfettiBlast(isSuper = false) {
+    const count = isSuper ? 180 : 100;                    // More particles for 99% coupon
+    const colors = ['#22d3ee', '#67e8f9', '#a5f3fc', '#facc15', '#fb923c', '#f472b6'];
+
+    for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.textContent = ['✨','🎉','💥','⭐','🔥','🌟'][Math.floor(Math.random()*6)];
+            
+            particle.style.position = 'fixed';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '-40px';
+            particle.style.fontSize = (isSuper ? 28 : 22) + 'px';
+            particle.style.zIndex = '9999';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.95';
+            
+            document.body.appendChild(particle);
+
+            const duration = isSuper ? 2800 : 2200;
+            const angle = Math.random() * 100 - 50;
+
+            particle.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight + 150}px) rotate(${angle * 10}deg)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+            });
+
+            setTimeout(() => particle.remove(), duration + 200);
+        }, i * 3);
+    }
+}
         function generateDynamicQR() {
             const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${finalAmount}&cu=INR`;
 
