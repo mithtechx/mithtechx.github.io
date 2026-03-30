@@ -289,32 +289,69 @@
     </div>
 </section>
 
-<!-- ABOUT US SECTION -->
+<!-- ABOUT US SECTION - With Form -->
 <section id="about" class="py-24 bg-white">
     <div class="max-w-screen-2xl mx-auto px-8">
         <div class="grid lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left Content -->
             <div class="lg:col-span-7">
                 <span class="uppercase text-cyan-600 font-semibold tracking-widest">KNOW US</span>
-                <h2 class="heading-font text-5xl mt-4">Hi, I'm MithTechX</h2>
+                <h2 class="heading-font text-5xl mt-4">Hi, I’m MithTechX</h2>
                 
                 <div class="mt-8 text-lg text-slate-600 leading-relaxed max-w-2xl">
                     <p>I'm a freelance professional from Pune, India, specializing in Web Development, Graphic & Logo Design, Finite Element Analysis (FEA), and Data Processing.</p>
                     <p class="mt-4">I deliver clean, reliable solutions with clear communication and fast turnaround times.</p>
                 </div>
 
-                <div class="mt-12">
-                    <button onclick="enquireAboutUs()" 
-                            class="inline-flex items-center gap-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-lg px-10 py-5 rounded-3xl shadow-lg">
-                        <i class="fa-brands fa-whatsapp text-3xl"></i>
-                        Enquire About Us on WhatsApp
-                    </button>
+                <!-- Enquiry Form -->
+                <div class="mt-10 bg-slate-50 border border-slate-200 rounded-3xl p-8">
+                    <h3 class="text-xl font-semibold mb-6">Enquire About Us</h3>
+                    
+                    <form id="about-enquiry-form">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Your Name *</label>
+                                <input type="text" id="about-name" required class="w-full border border-slate-300 rounded-2xl px-5 py-4 text-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email Address *</label>
+                                <input type="email" id="about-email" required class="w-full border border-slate-300 rounded-2xl px-5 py-4 text-lg">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium mb-2">Service Interested In</label>
+                            <select id="about-service" class="w-full border border-slate-300 rounded-2xl px-5 py-4 text-lg">
+                                <option value="">Select Service...</option>
+                                <option value="Logo Design">Logo Design</option>
+                                <option value="Graphic Design">Graphic Design</option>
+                                <option value="Web Development">Web & Mobile Development</option>
+                                <option value="FEA">Finite Element Analysis (FEA)</option>
+                                <option value="Data Processing">Data Processing</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium mb-2">Project Details / Message</label>
+                            <textarea id="about-message" rows="4" class="w-full border border-slate-300 rounded-2xl px-5 py-4 text-lg resize-none"></textarea>
+                        </div>
+
+                        <button type="button" onclick="submitAboutEnquiry()" 
+                                class="mt-8 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-5 rounded-3xl text-lg">
+                            Send Enquiry on WhatsApp
+                        </button>
+                    </form>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 bg-slate-100 rounded-3xl p-10 text-center">
-                <div class="text-6xl mb-6">🛠️</div>
-                <h3 class="text-3xl font-semibold">Professional Freelance Services</h3>
-                <p class="text-slate-600 mt-4">Pune, Maharashtra, India</p>
+            <!-- Right Side -->
+            <div class="lg:col-span-5">
+                <div class="bg-slate-100 rounded-3xl p-10 text-center">
+                    <div class="text-7xl mb-6">🛠️</div>
+                    <h3 class="text-3xl font-semibold">Professional Freelance Services</h3>
+                    <p class="text-slate-600 mt-4">Pune, Maharashtra, India</p>
+                </div>
             </div>
         </div>
     </div>
@@ -361,34 +398,30 @@ function sendMessage() {
     const text = `Hi MithTechX!%0A%0AName: ${name}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
     window.open(`https://wa.me/918261039902?text=${text}`, '_blank');
 }
-</script>
-    <!-- Add this just before </body> -->
-<a href="https://wa.me/918261039902" target="_blank"
-   class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl text-3xl z-50">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-   <script>
-// === YOUR GOOGLE SCRIPT URL ===
+<script>
+// Your Google Script URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxh4aUjHpFzv8_Uf710Wckwkd85LsQrh-HO3wXkkVGcafyn7T4imtlV2pMDbUGOIDnn/exec";
 
-function enquireAboutUs() {
-    // Ask for basic info
-    const name = prompt("Enter your name:", "") || "Anonymous";
-    const email = prompt("Enter your email (optional):", "");
+function submitAboutEnquiry() {
+    const name = document.getElementById('about-name').value.trim();
+    const email = document.getElementById('about-email').value.trim();
+    const service = document.getElementById('about-service').value;
+    const message = document.getElementById('about-message').value.trim();
 
-    // WhatsApp Message
-    const whatsappMsg = `Hi MithTechX,%0A%0AI visited your website and would like to know more about your services.%0A%0APlease share details.`;
+    if (!name || !email) {
+        alert("Please fill Name and Email");
+        return;
+    }
 
     // Save to Google Sheets
-    const saveUrl = `${GOOGLE_SCRIPT_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=General Enquiry from About Section`;
-
-    fetch(saveUrl, { 
-        method: 'GET',
-        mode: 'no-cors'
-    }).catch(err => console.log("Sheet save failed", err));
+    const saveUrl = `${GOOGLE_SCRIPT_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(service + " - " + message)}`;
+    
+    fetch(saveUrl, { method: 'GET', mode: 'no-cors' })
+        .catch(() => console.log("Saved to sheet"));
 
     // Open WhatsApp
-    window.open(`https://wa.me/918261039902?text=${whatsappMsg}`, '_blank');
+    const whatsappText = `Hi MithTechX,%0AName: ${name}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message || "General Enquiry"}`;
+    window.open(`https://wa.me/918261039902?text=${whatsappText}`, '_blank');
 }
 </script>
 </body>
